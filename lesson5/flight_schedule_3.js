@@ -16,3 +16,6 @@ function checkFlightSchedule(callback) {
 function callback(startTime) {
   console.log('通过反馈通道获得了信息');
   console.log(startTime);
+}
+
+checkFlightSchedule(callback);
