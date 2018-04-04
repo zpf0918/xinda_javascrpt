@@ -1,4 +1,4 @@
-var config = {
+  var config = {
   height: 170,
   weight: 120,
   sex: 'man',

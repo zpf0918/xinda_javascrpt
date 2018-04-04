@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+   <head>
+     <script src="./public/vue.min.js"></script>
+   </head>
+   <body>
+     <div id = "app">
+       <h1>{{ title }}</h1>
+     </div>
+   </body>
+</html>
+
+<script>
+  var obj = {
+    el: '#app',
+    data: {
+      title: '学习JavaScript'
+    }
+  };
+
+  var app = new Vue(obj);
+
+  setTimeout(function() {
+    app.title = 'JavaScript真容易'
+  }, 1000)
+</script>
