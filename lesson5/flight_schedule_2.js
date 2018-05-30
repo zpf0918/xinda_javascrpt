@@ -8,11 +8,13 @@ function checkFlightSchedule(callback) {
   	to: 'shanghai'
   };
 
+
   callback(scheduleInfo.start);
+  return 1;
 }
 
-function call(startTime) {
+function weixin(startTime) {
   console.log(startTime);
 }
 
-checkFlightSchedule(call);
+checkFlightSchedule(weixin); //通过微信返回结果
