@@ -3,7 +3,6 @@ function callback() {
 }
 
 function rub(cb) {
-  console.log('🏃🏃🏃🏃🏃');
   cb();
 }
 

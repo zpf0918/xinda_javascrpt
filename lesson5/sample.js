@@ -1,14 +1,5 @@
-function run(callback) {
-  console.log(' is running');
-  if (typeof callback === 'function') {
-    callback();
-  } else {
-    console.log('is not function');
-  }
-}
+var fs = require('fs');
 
+var files = fs.readdirSync('./');
 
-function callback() {
-  console.log('end.');
-}
-run(callback);
+console.log(files);

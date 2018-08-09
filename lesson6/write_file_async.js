@@ -12,4 +12,4 @@ function callback(err) {
   }
 }
 
-fs.writeFile(filePathString, fileContent, callback);
+fs.writeFile(filePathString, fileContent, callback); //通过回调的方式来返回结果

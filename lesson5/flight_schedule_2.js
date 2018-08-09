@@ -8,12 +8,10 @@ function checkFlightSchedule(callback) {
   	to: 'shanghai'
   };
 
-
   callback(scheduleInfo.start);
-  return 1;
 }
 
-function weixin(startTime) {
+function callback(startTime) {
   console.log(startTime);
 }
 
