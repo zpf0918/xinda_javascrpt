@@ -1,10 +1,7 @@
-// function timeout(ms) {
-//   return new Promise((resolve, reject) => {
-//     setTimeout(resolve, ms, 'Do');
-//   });
-// }
+function fun(x) {
+  if (x === null) {
+    return '未设置';
+  }
+}
 
-// timeout(5000).then((value) => {
-//   console.log(value);
-// });
-//
+console.log(fun(null));
