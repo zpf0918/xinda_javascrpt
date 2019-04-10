@@ -31,5 +31,3 @@ getName(function (name) {
 })
 
 
-getName.
-
