@@ -1,10 +1,20 @@
+var a = 30
 function foo() {
   console.log(this.a)
 }
 
 var obj = {
-  a: 1
+  a: 18
 }
 
-var bar = foo.call()
-console.log(bar)
+var obj1 = {
+  a: 20
+}
+
+var bar = function() {
+  console.log(this.a)
+  foo.call(obj)
+}
+
+bar()
+bar.call(obj1)

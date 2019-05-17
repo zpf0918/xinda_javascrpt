@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!-- <script type="text/javascript" src="./foo.js"></script> -->
+  <title>Document</title>
+</head>
+<style>
+  #app {
+    text-align: center;
+  }
+  #ie {
+    margin-top: 100px;
+    text-align: center;
+  }
+  .image {
+    width: 300px;
+    height: 300px;
+  }
+  .text {
+    margin: 10px;
+  }
+  .link {
+    margin: 0 20px;
+  }
+</style>
+<body>
+  <div id="ie">
+    <image class="image" src="https://ws1.sinaimg.cn/large/006tNc79ly1g26lni22akj30ou0jw3ys.jpg"></image>
+    <p class="text">出错啦！随机化系统不支持IE浏览器!</p>
+    <p class="text">推荐使用以下浏览器</p>
+    <a class="link" href="https://www.google.com/intl/zh-CN_ALL/chrome/">谷歌浏览器</a>
+    <a class="link" href="https://browser.qq.com/">QQ浏览器</a>
+    <a class="link" href="https://ie.sogou.com/">搜狗浏览器</a>
+  </div>
+  <div id="app">
+    我不是IE
+  </div>
+</body>
+</html>
+<script>
+  var userAgent = navigator.userAgent
+  var isIE = userAgent.indexOf('Trident/') > -1 || userAgent.indexOf('MSIE ')
+  if (isIE) {
+    document.getElementById('ie').style.display = 'block'
+    document.getElementById('app').style.display = 'none'
+  } else {
+    document.getElementById('ie').style.display = 'none'
+  }
+</script>
