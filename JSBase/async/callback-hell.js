@@ -36,3 +36,130 @@ function add(xPromise, yPromise) {
   return Promise.all(xPromise, yPromise)
   .then(cb(values))
 }
+
+
+
+
+
+
+// 模拟回调地狱
+function taskA(callback) {
+  setTimeout(() => {
+    callback('taskA')
+  }, 2000)
+}
+
+function taskB(callback) {
+  setTimeout(() => {
+    callback('taskB')
+  }, 2000)
+  return callback
+}
+
+function taskC(callback) {
+  setTimeout(() => {
+    callback('taskC')
+  }, 2000)
+  return callback
+}
+
+taskA(
+  taskB(
+    taskC(
+      function (res) {
+        console.log(res)
+      }
+    )
+  )
+)
+
+
+function TaskA(url, callback) {
+  let req = new XMLHttpRequest()
+  req.open('GET', url, true)
+  req.onload = function () {
+    if (req.status === 200) {
+      callback(req.responseText)
+    } else {
+      new Error(req.statusText)
+    }
+  }
+  req.onerror = function () {
+    new Error(req.statusText)
+  }
+  req.send()
+}
+
+
+function TaskB(url, callback) {
+  let req = new XMLHttpRequest()
+  req.open('GET', url, true)
+  req.onload = function () {
+    if (req.status === 200) {
+      callback(req.responseText)
+    } else {
+      new Error(req.statusText)
+    }
+  }
+  req.onerror = function () {
+    new Error(req.statusText)
+  }
+  req.send()
+}
+
+function TaskC(url, callback) {
+  let req = new XMLHttpRequest()
+  req.open('GET', url, true)
+  req.onload = function () {
+    if (req.status === 200) {
+      callback(req.responseText)
+    } else {
+      new Error(req.statusText)
+    }
+  }
+  req.onerror = function () {
+    new Error(req.statusText)
+  }
+  req.send()
+}
+
+TaskA('http://some.url', 
+  TaskB('http://some.url',
+    TaskC('http://some.url',
+      function (res) {
+        console.log(res)
+      }
+    )
+  )
+)
+
+function TaskA(callback) {
+  let result = 1
+  callback(result)
+}
+
+function TaskB(callback) {
+  let result = 2
+  callback(result)
+}
+
+function TaskC(callback) {
+  let result = 3
+  callback(result)
+}
+
+TaskA(function (result) {
+  console.log(result)
+  if (result === 1) {
+    TaskB(function (result) {
+      console.log(result)
+      if (result === 2) {
+        TaskC(function (result) {
+          console.log(result)
+        })
+      }
+    })
+  }
+})
+
+
