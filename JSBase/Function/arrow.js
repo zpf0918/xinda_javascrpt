@@ -61,4 +61,3 @@ var obj = {
   }
 }
 obj.getName()
-
