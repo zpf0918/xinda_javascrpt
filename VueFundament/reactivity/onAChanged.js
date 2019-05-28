@@ -1,16 +1,17 @@
+// onAChanged 函数
 function observe(obj) {
   Object.keys(obj).forEach(key => {
-    let internalValue = obj[key]
+    let internalVal = obj[key]
     Object.defineProperty(obj, key, {
       get () {
-        return internalValue
+        return internalVal
       },
       set (newValue) {
-        if (internalValue === newValue) {
+        if (internalVal === newValue) {
           return
         }
-        internalValue = newValue
-        onAChanged(() => b = state.a * 10)
+        internalVal = newValue
+        onAChanged(() => b = state.a * 2)
       },
       enumerable: true,
       configurable: true
@@ -18,11 +19,10 @@ function observe(obj) {
   })
 }
 
+let b
 
-var b = ''
-
-var state = {
-  a: 10
+const state = {
+  a: 1
 }
 
 function onAChanged(cb) {
@@ -31,9 +31,6 @@ function onAChanged(cb) {
 
 observe(state)
 
-state.a = 20
-
+state.a = 2
 console.log(b)
-
-
 
