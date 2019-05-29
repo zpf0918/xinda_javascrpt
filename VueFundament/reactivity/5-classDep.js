@@ -1,9 +1,10 @@
-// onAChanged 函数
 function observe(obj) {
   Object.keys(obj).forEach(key => {
     let internalVal = obj[key]
+    const dep = new Dep()
     Object.defineProperty(obj, key, {
       get () {
+        dep.addSubs(target)
         return internalVal
       },
       set (newValue) {
@@ -11,7 +12,7 @@ function observe(obj) {
           return
         }
         internalVal = newValue
-        onAChanged(() => b = state.a * 2)
+        dep.notify()
       },
       enumerable: true,
       configurable: true
@@ -19,18 +20,32 @@ function observe(obj) {
   })
 }
 
-let b
+class Dep {
+  constructor () {
+    this.subs = []
+  }
 
-const state = {
-  a: 1
+  addSubs (target) {
+    this.subs.push(target)
+  }
+
+  notify () {
+    this.subs.map(sub => sub())
+  }
 }
 
-function onAChanged(cb) {
-  cb()
+const state = {
+  a: 1,
+  b: 2
+}
+
+function target () {
+  console.log('ok')
 }
 
 observe(state)
 
-state.a = 2
-console.log(b)
+state.a 
+state.a
 
+state.a = 20

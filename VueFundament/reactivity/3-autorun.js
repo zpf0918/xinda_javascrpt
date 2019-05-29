@@ -1,10 +1,9 @@
 function observe(obj) {
   Object.keys(obj).forEach(key => {
     let internalVal = obj[key]
-    const dep = new Dep()
     Object.defineProperty(obj, key, {
       get () {
-        dep.subs.push(target)
+        console.log(`get: obj ${key} is: ${internalVal}`)
         return internalVal
       },
       set (newValue) {
@@ -12,7 +11,8 @@ function observe(obj) {
           return
         }
         internalVal = newValue
-        dep.notify()
+        console.log(`set: obj ${key} is: ${internalVal}`)
+        autorun(() => console.log('ok'))
       },
       enumerable: true,
       configurable: true
@@ -20,32 +20,14 @@ function observe(obj) {
   })
 }
 
-class Dep {
-  constructor () {
-    this.subs = []
-  }
-
-  addSubs (target) {
-    this.subs.push(target)
-  }
-
-  notify () {
-    this.subs.map(sub => sub())
-  }
-}
-
 const state = {
   a: 1,
   b: 2
 }
 
-function target () {
-  console.log('ok')
+function autorun(cb) {
+  cb()
 }
 
 observe(state)
-
-state.a 
-state.a
-
-state.a = 20
+state.b = 10

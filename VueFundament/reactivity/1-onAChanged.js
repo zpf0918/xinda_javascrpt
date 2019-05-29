@@ -1,9 +1,9 @@
+// onAChanged 函数
 function observe(obj) {
   Object.keys(obj).forEach(key => {
     let internalVal = obj[key]
     Object.defineProperty(obj, key, {
       get () {
-        console.log(`get: obj ${key} is: ${internalVal}`)
         return internalVal
       },
       set (newValue) {
@@ -11,7 +11,7 @@ function observe(obj) {
           return
         }
         internalVal = newValue
-        console.log(`set: obj ${key} is: ${internalVal}`)
+        onAChanged(() => b = state.a * 2)
       },
       enumerable: true,
       configurable: true
@@ -19,14 +19,18 @@ function observe(obj) {
   })
 }
 
+let b
+
 const state = {
-  a: 1,
-  b: 2
+  a: 1
 }
 
-function autorun(cb) {
-  cb()
+function onAChanged(update) {
+  update()
 }
 
 observe(state)
-state.b = 10
+
+state.a = 2
+console.log(b)
+
