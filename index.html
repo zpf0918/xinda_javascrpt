@@ -9,39 +9,40 @@
 </head>
 <body>
   <div id="app">
-    <example :ok="ok"></example>
-    <button @click="switch">切换</button>
-    <foo></foo>
-    <bar></bar>
+    <counter></counter>
+    <counter></counter>
+    <counter></counter>
+    <button @click="inc">increment</button>
   </div>
 </body>
 </html>
 
 <script>
-  const Foo = Vue.component('Foo', {
-    render (h) {
-      return h('div', 'foo')
+  const store = {
+    state: {
+      count: 0
+    },
+    inc: function () {
+      this.state.count++
     }
-  })
-
-  const Bar = {
-    
   }
+  
 
-  Vue.component('example', {
-    props: {
-      ok: {
-        type: Boolean,
-        default: true
-      }
-    }
-  })
+  const counter = {
+    render: (h) => h('div', `${store.state.count}`)
+  }
 
   var app = new Vue({
     el: '#app',
+    components: { counter },
     data () {
       return {
-        ok: true
+        state: store.state
+      }
+    },
+    methods: {
+      inc () {
+        store.inc()
       }
     }
   })

@@ -25,8 +25,8 @@ const state = {
   b: 2
 }
 
-function autorun(cb) {
-  cb()
+function autorun(update) {
+  update()
 }
 
 observe(state)
