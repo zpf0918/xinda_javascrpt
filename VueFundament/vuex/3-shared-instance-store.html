@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://cdn.bootcss.com/vue/2.6.10/vue.min.js"></script>
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <counter></counter>
+    <counter></counter>
+    <counter></counter>
+    <button @click="inc">increment</button>
+  </div>
+</body>
+</html>
+
+<script>
+  const state = new Vue({
+    data: {
+      count: 0
+    },
+    methods: {
+      inc () {
+        this.count++
+      }
+    }
+  })
+
+  const Counter = {
+    render: (h) => h('div', state.count)
+  }
+
+  new Vue({
+    el: '#app',
+    components: { Counter },
+    methods: {
+      inc () {
+        state.inc()
+      }
+    }
+  })
+</script>

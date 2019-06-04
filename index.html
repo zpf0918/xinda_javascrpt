@@ -9,40 +9,84 @@
 </head>
 <body>
   <div id="app">
-    <counter></counter>
-    <counter></counter>
-    <counter></counter>
-    <button @click="inc">increment</button>
+    <!-- <p>{{ message }}</p> -->
+    <p>count {{ count }}</p>
+    <keep-alive>
+      <children v-if="isShow"></children>
+    </keep-alive>
+    <button v-on:click="count++">increment</button>
+    <button v-on:click="handleShow">显示/隐藏</button>
   </div>
 </body>
 </html>
 
 <script>
-  const store = {
-    state: {
-      count: 0
+  const children = {
+    render: (h) => h('div', '子组件'),
+    activated () {
+      console.log('children activated')
     },
-    inc: function () {
-      this.state.count++
+    deactivated () {
+      console.log('children deactivated')
+    },
+    beforeDestroy () {
+      console.log(this.$data)
+    },
+    destroyed () {
+      console.log(this.$data)
     }
-  }
-  
-
-  const counter = {
-    render: (h) => h('div', `${store.state.count}`)
   }
 
   var app = new Vue({
     el: '#app',
-    components: { counter },
+    components: { children },
     data () {
       return {
-        state: store.state
+        message: 'HelloVue',
+        count: 0,
+        isShow: false
       }
     },
+    beforeCreate () {
+      console.log('beforeCreate', this.message)
+    },
+    created () {
+      console.log('created', this.message)
+    },
+    beforeMount () {
+      console.log('beforeMount', this.message)
+    },
+    mounted () {
+      console.log('mounted', this.message)
+    },
+    beforeUpdate () {
+      console.log('beforeUpdate')
+      // console.log(document.querySelector('#app'))
+      // console.log(this.$el.innerHTML)
+    },
+    updated () {
+      console.log('update', this.message)
+      // console.log(document.querySelector('#app'))
+      // console.log(this.$el.innerHTML)
+    },
+    activated () {
+      console.log('actived')
+    },
+    deactivated () {
+      console.log('deactived')
+    },
+    beforeDestroy () {
+      console.log('before destory')
+    },
+    destroyed () {
+      console.log('destory')
+    },
     methods: {
-      inc () {
-        store.inc()
+      handleShow () {
+        this.isShow = !this.isShow
+      },
+      testBeforeCreate () {
+        console.log('ok')
       }
     }
   })
