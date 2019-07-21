@@ -1,70 +1,78 @@
-function observe(obj) {
-  Object.keys(obj).forEach(key => {
-    let internalValue = obj[key]
-    let dep = []
-    Object.defineProperty(obj, key, {
-      get () {
-        dep.push(target)
-        console.log(dep)
-        return internalValue
-      },
-      set (newValue) {
-        if (internalValue === newValue) {
-          return
-        }
-        internalValue = newValue
-        dep.map(sub => sub())
-      },
-      enumerable: true,
-      configurable: true
-    })
-  })
-}
+// // function composeArgs(fn) {
+// //   return function compose(...args) {
+// //     return fn(args)
+// //   }
+// // }
 
+// // function f(args) {
+// //   console.log(args)
+// // }
 
-var state = {
-  a: 1
-}
+// // var g = composeArgs(f)
+// // g(1,2,3,4)
 
-observe(state)
+// // function isOdd(v) {
+// //   return v % 2 === 1
+// // }
 
-let target, b, c, d
+// // function isEven(v) {
+// //   return !isOdd(v)
+// // }
 
-function autorun(update) {
-  target = function () {
-    update()
-  }
-}
+// // function not(fn) {
+// //   return function negated(v) {
+// //     return !fn(v)
+// //   }
+// // }
 
-// 即想访问到a，也能把函数赋值过去
-function autorun(update) {
-  target = function () {
-    update()
-  }
-  update()
-}
+// function output(txt) {
+// 	console.log(txt);
+// }
 
-// 上面函数的优化 注: 只是写法更高级了，思想没有变
-function autorun(update) {
-  function internal() {
-    target = internal
-    update()
-  }
-  internal()
-}
+// function when(fn) {
+//   return function printIf(predicate) {
+//     return function (msg) {
+//       if (predicate(msg)) {
+//         fn(msg)
+//       }
+//     }
+//   }
+// }
 
+// function isShortEnough(str) {
+// 	return str.length <= 5;
+// }
 
-// 如果只是单纯的访问了a，什么也不更新，那么此时就不需要订阅， 
-// 那么问题就在于如果得知是单纯的访问a，即没有更新函数时
-// 此时一个最好的办法是根据一个第三方的变量来判断。
-function autorun(update) {
-  target = function () {
-    update()
-  }
-  update()
-}
+// function notIsShortEnough(fn) {
+//   return function noShort(str) {
+//     return !fn(str)
+//   }
+// }
 
-autorun(() => b = state.a * 10)
-autorun(() => c = state.a * 20)
-autorun(() => d = state.a * 30)
-console.log(b, c, d)
+// var isLongEnough = notIsShortEnough(isShortEnough)
+
+// var msg1 = "Hello";
+// var msg2 = msg1 + " World";
+// var printIf = when(output)
+
+// printIf(isShortEnough)(msg1);		// Hello
+// printIf(isShortEnough)(msg2);
+// printIf(isLongEnough)(msg1);
+// printIf(isLongEnough)(msg2);		// Hello World
+
+// for (let i = 0; i < 3; i++) {
+//   setTimeout(() => {
+//     console.log(i)
+//   }, 3000)
+// }
+
+let promise = new Promise((resolve, reject) => {
+  console.log('hahha')
+  resolve('ok')
+})
+
+promise.then(function (value) {
+  console.log(value)
+})
+
+console.log('lulu')

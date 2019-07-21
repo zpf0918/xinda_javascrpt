@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <style>
+    #container {
+      width: 200px;
+      height: 200px;
+      /* border-radius: 100px; */
+      background: red;
+      color: white;
+    }
+  </style>
+  <title>Document</title>
+</head>
+<body>
+  <div id="container"></div>
+  <script>
+    let container = document.getElementById('container')
+
+    let promise = Promise.resolve()
+    let text = document.createElement('div')
+    text.innerText = '我是主线程任务'
+    container.appendChild(text)
+   
+    setTimeout(() => {
+      let text = document.createElement('div')
+      text.innerText = '我是宏任务'
+      container.appendChild(text)
+    }, 3000)
+
+    promise.then(() => {
+      let text = document.createElement('div')
+      text.innerText = '我是微任务1'
+      container.appendChild(text)
+    })
+
+
+  </script>
+</body>
+</html>
