@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://cdn.bootcss.com/vue/2.6.10/vue.min.js"></script>
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <child-a :count="count" @handle="handle"></child-a>
+    <button @click="handleClick">我是父组件button</button>
+  </div>
+</body>
+</html>
+
+<script>
+  const ChildA = {
+    props: {
+      count: {
+        type: Number,
+        default: 0
+      }
+    },
+    template: `<div>{{ count }} <button @click="handleClick">我是子组件button</button></div>`,
+    methods: {
+      handleClick () {
+        this.$emit('handle')
+      }
+    }
+  }
+
+  const app = new Vue({
+    el: '#app',
+    components: {
+      ChildA
+    },
+    data () {
+      return {
+        count: 0
+      }
+    },
+    methods: {
+      handleClick () {
+        this.count++
+      },
+      handle () {
+        alert('成功了')
+      }
+    }
+  })
+</script>

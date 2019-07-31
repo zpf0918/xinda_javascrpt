@@ -12,7 +12,6 @@
     <counter></counter>
     <counter></counter>
     <counter></counter>
-
     <button @click="inc">increment</button>
   </div>
 </body>
@@ -41,7 +40,7 @@
   const Counter = {
     render: (h) => h('div', store.state.count)
   }
-  
+
   const app = new Vue({
     el: '#app',
     components: { Counter },
