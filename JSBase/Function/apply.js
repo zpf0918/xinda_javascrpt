@@ -22,3 +22,15 @@ var arr2 = [10, 11, 12]
 var result = arr1.push.apply(arr1, arr2)
 console.log(result)
 console.log(arr1)
+
+
+var obj = {
+  foo: 'foo',
+  bar: bar
+}
+
+function bar(arg1, arg2, arg3) {
+  console.log(this.foo, arg1, arg2, arg3)
+}
+
+bar.apply(obj, [1,2,3])

@@ -4,35 +4,53 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <script src="https://cdn.bootcss.com/vue/2.6.10/vue.min.js"></script>
   <title>Document</title>
 </head>
 <body>
-  <div id="app">
-    {{ msg }}  
+  <div class="container">
+    <input class="input" type="text" placeholder="First Name">
   </div>
+
 </body>
 </html>
-
-<script>
-  const app = new Vue({
-    el: '#app',
-    data () {
-      return { msg: 'hhhhh' }
-    },
-    beforeCreate () {
-      // console.log(this.count, this.other)
-      console.log(this.$el, 'beforeCreate')
-    },
-    created () {
-      // console.log(this.count, this.other)
-      console.log(this.$el, 'created')
-    },
-    beforeMount () {
-      console.log(this.$el, 'beforeMount')
-    },
-    mounted () {
-      console.log(this.$el, 'mounted')
-    }
-  })
-</script>
+<style>
+  :focus {
+    outline: 0;
+  }
+  input[type="text"] {
+    width: 100%;
+  }
+  .container {
+    width: 200px;
+    position: relative;
+  }
+  /* .input {
+    border: 0;
+    padding: 10px 0;
+    border-bottom: 1px solid #ccc;
+  }
+  .input ~ .border {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background-color: #27ad8a;
+  }
+  .input:focus ~ .border {
+    left: 0;
+    width: 100%;
+    transition: .5s;
+  } */
+  .input {
+    background-size: 0 100% 100% 100%;
+   
+    border: 0;
+  }
+  .input:focus {
+    background-size: 100% 100% 100% 100%;
+    background: linear-gradient(0deg,#9c27b0 2px,rgba(156,39,176,0) 0),linear-gradient(0deg,#d2d2d2 1px,hsla(0,0%,82%,0) 0);
+    transition: .4s;
+    /* background: none; */
+  }
+</style>

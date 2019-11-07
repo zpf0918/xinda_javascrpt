@@ -4,51 +4,75 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <script src="https://cdn.bootcss.com/vue/2.6.10/vue.min.js"></script>
   <title>Document</title>
 </head>
 <body>
-  <div id="app">
-    <counter></counter>
-    <counter></counter>
-    <counter></counter>
+  <div id="parent">
+    <div class="top">
+      <div>111111</div>
+      <div>111111</div>
+      <div>111111</div>
+      <div>111111</div>
+      <div>111111</div>
+      <div>111111</div>
+      <div>111111</div>
+      <div>111111</div>
+      <div>111111</div>
+      <div>111111</div>
+      <div>111111</div>
+      <div>111111</div>
+      <div>111111</div>
+      <div>111111</div>
+      <div>111111</div>
 
-    <button @click="inc">increment</button>
+      <div>111111</div>
+      <div>111111</div>
+      <div>111111</div>
+      <div>111111</div>
+      <div>111111</div>
+      <div>111111</div>
+      <div>111111</div>
+      <div>111111</div>
+      <div>111111</div>
+      <div>111111</div>
+      <div>111111</div>
+      <div>111111</div>
+      <div>111111</div>
+      <div>111111</div>
+      <div>111111</div>
+      <div>111111</div>
+      <div>111111</div>
+      <div>111111</div>
+      <div>111111</div>
+      <div>111111</div>
+
+      <div>111111</div>
+      <div>111111</div>
+      <div>111111</div>
+      <div>111111</div>
+      <div>222</div>
+    </div>
+    <div class="bottom"></div>
   </div>
 </body>
 </html>
-<script>
-  function createStore({ state, mutations }) {
-    return new Vue({
-      data: { state },
-      methods: {
-        commit (mutationType) {
-          mutations[mutationType](this.state)
-        }
-      }
-    })
+<style>
+  #parent {
+    position: relative;
+    width: 500px;
+    height: 500px;
+    background: greenyellow;
   }
-
-  const store = createStore({
-    state: { count: 0 },
-    mutations: {
-      inc (state) {
-        state.count++
-      }
-    }
-  })
-
-  const Counter = {
-    render: (h) => h('div', store.state.count)
+  .top {
+    height: 450px;
+    overflow: auto;
   }
-  
-  const app = new Vue({
-    el: '#app',
-    components: { Counter },
-    methods: {
-      inc () {
-        store.commit('inc')
-      }
-    }
-  })
-</script>
+  .bottom {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 50px;
+    background: red;
+  }
+</style>

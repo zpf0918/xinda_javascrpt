@@ -1,13 +1,25 @@
+// var obj = {
+//   name: 'Joe'
+// }
+
+// function foo(arg1, arg2) {
+//   return {
+//     name: arg1,
+//     age: arg2
+//   }
+// }
+
+// var result = foo.call(obj, 'Han')
+// console.log(result)
+
 var obj = {
-  name: 'Joe'
+  foo: 'foo',
+  bar: bar
 }
 
-function foo(arg1, arg2) {
-  return {
-    name: arg1,
-    age: arg2
-  }
+function bar (arg1, arg2, arg3) {
+  console.log(this.foo, arg1, arg2, arg3)
 }
 
-var result = foo.call(null, 'Han')
-console.log(result)
+var foo = 'window foo'
+

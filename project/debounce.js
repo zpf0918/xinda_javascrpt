@@ -3,7 +3,7 @@ function debounce(fn, delay) {
 
   return function () {
     clearTimeout(timer)
-    setTimeout(() => {
+    timer = setTimeout(() => {
       fn()
     }, delay)
   }

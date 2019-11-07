@@ -36,4 +36,19 @@ var result = foo.bind(null, 'Joe')
 console.log(result())
 console.log(result(18, '北京'))
 
+var obj = {
+  foo: 'foo',
+  bar: bar
+}
+
+var foo = 'window foo'
+
+function bar(arg1, arg2) {
+  console.log(this.foo, arg1, arg2)
+}
+
+var res = bar.bind(obj, 'a', 'b', 'c')
+res('d')
+
+
 
