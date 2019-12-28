@@ -4,75 +4,58 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://cdn.bootcss.com/vue/2.6.10/vue.min.js"></script>
+  <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
   <title>Document</title>
+  <style>
+    #audio_btn {
+    width: 30px;
+    height: 30px;
+    background-image: url('./call.png');     background-size: contain;
+ }
+ 
+ .rotate {
+     -webkit-animation: rotating 1.2s linear infinite;
+     -moz-animation: rotating 1.2s linear infinite;     -o-animation: rotating 1.2s linear infinite;
+     animation: rotating 1.2s linear infinite
+ }
+ 
+ @-webkit-keyframes rotating {
+     from { -webkit-transform: rotate(0) }
+     to { -webkit-transform: rotate(360deg) }
+ }
+ 
+ @keyframes rotating {
+     from { transform: rotate(0) }
+     to { transform: rotate(360deg) }
+ }
+ @-moz-keyframes rotating {
+     from { -moz-transform: rotate(0) }
+   to { -moz-transform: rotate(360deg) } 
+   }
+  </style>
 </head>
 <body>
-  <div id="parent">
-    <div class="top">
-      <div>111111</div>
-      <div>111111</div>
-      <div>111111</div>
-      <div>111111</div>
-      <div>111111</div>
-      <div>111111</div>
-      <div>111111</div>
-      <div>111111</div>
-      <div>111111</div>
-      <div>111111</div>
-      <div>111111</div>
-      <div>111111</div>
-      <div>111111</div>
-      <div>111111</div>
-      <div>111111</div>
-
-      <div>111111</div>
-      <div>111111</div>
-      <div>111111</div>
-      <div>111111</div>
-      <div>111111</div>
-      <div>111111</div>
-      <div>111111</div>
-      <div>111111</div>
-      <div>111111</div>
-      <div>111111</div>
-      <div>111111</div>
-      <div>111111</div>
-      <div>111111</div>
-      <div>111111</div>
-      <div>111111</div>
-      <div>111111</div>
-      <div>111111</div>
-      <div>111111</div>
-      <div>111111</div>
-      <div>111111</div>
-
-      <div>111111</div>
-      <div>111111</div>
-      <div>111111</div>
-      <div>111111</div>
-      <div>222</div>
+  <div id="app">
+    <div id="audio_btn" class="rotate">
+      <audio loop src="./music.mp3" id="media" autoplay="" preload=""></audio>
     </div>
-    <div class="bottom"></div>
   </div>
 </body>
 </html>
-<style>
-  #parent {
-    position: relative;
-    width: 500px;
-    height: 500px;
-    background: greenyellow;
-  }
-  .top {
-    height: 450px;
-    overflow: auto;
-  }
-  .bottom {
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    height: 50px;
-    background: red;
-  }
-</style>
+
+<script>
+//    var x = document.getElementById("media"); 
+//   $(function(){
+//         $("#audio_btn").click(function(){
+//         $(this).toggleClass("rotate"); //控制音乐图标 自转或暂停
+       
+//         //控制背景音乐 播放或暂停            
+//         if($(this).hasClass("rotate")){
+//             x.play();
+//          }else{
+//              x.pause();
+//          }
+//      })
+//  });
+</script>

@@ -1,5 +1,8 @@
 {
   "dependencies": {
-    "puppeteer": "^2.0.0"
+    "puppeteer": "^2.0.0",
+    "ramda": "^0.26.1",
+    "typescript": "^3.7.4",
+    "webpack": "^4.41.3"
   }
 }

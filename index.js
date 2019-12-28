@@ -1,22 +1,30 @@
-function shallowClone(source) {
-  const obj = {}
-  for (let i in source) {
-    if (source.hasOwnProperty(i)) {
-      obj[i] = source[i]
-    }
+// 情况1
+// const parent = { a: 1 }
+// const child = Object.create(parent)
+
+// child.a = 2
+// console.log(child.a)
+
+// 情况2
+// 'use strict'
+// const parent = {}
+// Object.defineProperty(parent, 'a', {
+//   value: 1,
+//   writable: false,
+//   enumerable: true,
+//   configurable: true
+// })
+
+// const child = Object.create(parent)
+// child.a = 2
+// console.log(child.a)
+
+// 情况3
+const parent = {
+  get a() {
+    return '我是parent的a'
   }
-  return obj
 }
 
-function deepClone(source) {
-  const obj = {}
-  for (let i in source) {
-    if (source.hasOwnProperty(i)) {
-      if (Object.prototype.toString.call(source[i]) === '[object Object]') {
-          obj[i] = deppClone(source[i])
-      } else {
-        obj[i] = source[i]
-      }
-    }
-  }
-}
+const child = Object.create(parent)
+console.log(child.a)
