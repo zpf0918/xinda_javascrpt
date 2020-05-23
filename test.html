@@ -1,43 +1,43 @@
-
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>测试用例</title>
-        <meta charset="UTF-8">
-        <link rel="stylesheet" type="text/css" href="assets/css/common/common.css">
-        <link rel="stylesheet" type="text/css" href="assets/css/demo.css">
- 
-        <style>
-            .img-container{
-                /*将图片容器设置为相对定位，作为图片定位的参照*/
-                position: relative;
-                /*设置块相对于其父级元素的宽度*/
-                width:20%;
-                /*图片容器只设置宽度属性，利用padding-top/padding-bottom将块撑开，设置相对于父级元素宽度的百分数*/
-                padding-bottom: 20%;
-                /*初始化图片容器高度为零*/
-                height: 0;
-                /*超出图片容器部分隐藏*/
-                overflow: hidden;
-                /*显示图片容器边框*/
-                border:1px solid red;
-            }
-          .img-container img{
-                /*设置图片为绝对定位，相对于图片容器定位*/
-                position: absolute;
-                /*距离图片容器顶部和左边位置为0*/
-                top:0;
-                left: 0;
-                /*相对于图片容器大小比例，此处为全覆盖图片容器*/
-                width: 100%;
-                height:100%;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="img-container">
-            <img src="assets/images/icon.png">
-        </div>
-    </body>
-    <script src="assets/js/demo.js"></script>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .assistor {
+      position: relative;
+      width: 500px;
+      height: 500px;
+      background: yellowgreen;
+    }
+    .parent {
+      width: 100%;
+      height: 400px;
+      background: blue;
+      overflow: auto;
+    }
+    .child {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 100px;
+      background: red;
+    }
+    .placeholder {
+      height: 200px;
+    }
+    </style>    
+</head>
+<body>
+  <div class="assistor">
+    <div class="parent">
+      <div class="child"></div>
+      <div class="placeholder">parent中的内容</div>
+      <div class="placeholder">parent中的内容</div>
+      <div class="placeholder">parent中的最后内容</div>
+    </div>
+  </div>
+</body>
 </html>

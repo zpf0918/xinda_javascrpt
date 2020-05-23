@@ -1,3 +1,5 @@
-let list: number[] = [1, 2, 3];
+const arr:object[] = new Array(4)
+arr.push({ a: 1 })
 
-// console.log(list)
+const obj:object = new Object()
+console.log(typeof obj)

@@ -4,58 +4,44 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <script src="https://cdn.bootcss.com/vue/2.6.10/vue.min.js"></script>
-  <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
-  <title>Document</title>
   <style>
-    #audio_btn {
-    width: 30px;
-    height: 30px;
-    background-image: url('./call.png');     background-size: contain;
- }
- 
- .rotate {
-     -webkit-animation: rotating 1.2s linear infinite;
-     -moz-animation: rotating 1.2s linear infinite;     -o-animation: rotating 1.2s linear infinite;
-     animation: rotating 1.2s linear infinite
- }
- 
- @-webkit-keyframes rotating {
-     from { -webkit-transform: rotate(0) }
-     to { -webkit-transform: rotate(360deg) }
- }
- 
- @keyframes rotating {
-     from { transform: rotate(0) }
-     to { transform: rotate(360deg) }
- }
- @-moz-keyframes rotating {
-     from { -moz-transform: rotate(0) }
-   to { -moz-transform: rotate(360deg) } 
-   }
+    .main {
+      background-color: #8e352e;
+    }
+
+    .c2 {
+      background-color: #c84c44;
+    }
+
+    .c3 {
+      background-color: #a53d36;
+    }
+
+    @media screen and (min-width: 37.5em) {
+      .c2, .c3 {
+        float: left;
+        width: 50%;
+      }
+    }
   </style>
+  <title>Document</title>
 </head>
 <body>
-  <div id="app">
-    <div id="audio_btn" class="rotate">
-      <audio loop src="./music.mp3" id="media" autoplay="" preload=""></audio>
+  <div id="pattern" class="pattern">
+    <div class="c">
+      <div class="main">
+        <h2>Main Content (1st in source order)</h2>
+        <p>1</p>
+      </div>
+      <div class="c2">
+        <h3>Column (2nd in source order)</h3>
+        <p>3</p>
+      </div>
+      <div class="c3">
+        <h3>Column (3nd in source order)</h3>
+        <p>4.</p>
+      </div>
     </div>
   </div>
 </body>
 </html>
-
-<script>
-//    var x = document.getElementById("media"); 
-//   $(function(){
-//         $("#audio_btn").click(function(){
-//         $(this).toggleClass("rotate"); //控制音乐图标 自转或暂停
-       
-//         //控制背景音乐 播放或暂停            
-//         if($(this).hasClass("rotate")){
-//             x.play();
-//          }else{
-//              x.pause();
-//          }
-//      })
-//  });
-</script>
